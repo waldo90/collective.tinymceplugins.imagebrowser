@@ -35,3 +35,13 @@ class TinyMCEExtendedAdapter(object):
             return
         resources = lines.splitlines()
         self.registry.imagebrowser_resources = resources
+
+    @getproperty
+    def imagebrowser_default_resource(self):
+        return self.registry.imagebrowser_default_resource
+
+    @setproperty
+    def imagebrowser_default_resource(self, line):
+        if not line:
+            line = u''
+        self.registry.imagebrowser_default_resource = line

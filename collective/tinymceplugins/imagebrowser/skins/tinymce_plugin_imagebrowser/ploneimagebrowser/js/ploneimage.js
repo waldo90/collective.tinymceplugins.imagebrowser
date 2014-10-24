@@ -25,6 +25,7 @@ var ImageDialog = {
         var ed = tinyMCEPopup.editor;
         var dom = ed.dom;
         var n = ed.selection.getNode();
+		
         labels = eval(ed.getParam('labels'));
 
         tinyMCEPopup.resizeToInnerSize();
@@ -94,7 +95,11 @@ var ImageDialog = {
                 this.getFolderListing(this.getParentUrl(href), 'tinymce-jsonimagefolderlisting');
             }
         } else {
-            this.getCurrentFolderListing();
+            if (typeof(default_resource_path) !== 'undefined') {
+				this.getFolderListing(tinyMCEPopup.editor.settings.navigation_root_url + '/' + default_resource_path, 'tinymce-jsonimagefolderlisting');
+			} else {
+				this.getCurrentFolderListing();
+			}
         }
     },
 

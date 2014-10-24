@@ -38,8 +38,9 @@
             </li-->
             <tal:block tal:define="portal here/@@plone_portal_state/portal;
                                    portal_url here/@@plone_portal_state/portal_url; 
-                                   res python:portal.restrictedTraverse('portal_tinymce/@@imagebrowser_resources');
-                                   res res/resources;
+                                   resource_view python:portal.restrictedTraverse('portal_tinymce/@@imagebrowser_resources');
+                                   res resource_view/resources;
+                                   default_res resource_view/default_resource; 
             "> 
                 <tal:loop tal:repeat="re res">
                   <li tal:define="id python:re[0];
@@ -47,9 +48,11 @@
                                  path python:re[2];
                                  icon python:len(re)>3 and re[3];
                   ">
+                    <script tal:condition="python: id == default_res" tal:content="string:var default_resource_path='${path}'" />
                     <a tal:attributes="href string: javascript:ImageDialog.displayPanel('internal_panel');; ImageDialog.getFolderListing('${path}', 'tinymce-jsonimagefolderlisting');; ;
                                        id id;
                     ">
+                    
                       <img tal:condition="icon" src="" tal:attributes="src python: portal_url + icon;" />
                       <span tal:content="title"></span>
                     </a>

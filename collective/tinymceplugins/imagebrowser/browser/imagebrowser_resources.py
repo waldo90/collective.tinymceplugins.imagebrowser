@@ -23,3 +23,9 @@ class ImagebrowserResources(BrowserView):
         resources = filter(lambda x: len(x) >= 3, resources)
 
         return resources
+    
+    @property
+    def default_resource(self):
+        registry = getUtility(IRegistry)
+        registry = registry.forInterface(ITinyMCELibrariesImageResources)
+        return registry.imagebrowser_default_resource

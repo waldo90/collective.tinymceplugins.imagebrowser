@@ -22,3 +22,11 @@ class ITinyMCELibrariesExtended(Interface):
                               u"'/logoIcon.gif'. The path_to_icon is optional."
                      ),
         required=False)
+    
+    imagebrowser_default_resource = schema.TextLine(
+        title=_(u"Default Image Resource (Optional)", default=u"Default Image Resource (Optional)"),
+        description=_(u"Default Image Resource Description",
+                      default=u"Enter the 'id' of one of the above image "
+                              u"resources to make it the default starting folder. "
+                              u"Leave blank to start in the current folder."),
+        required=False)

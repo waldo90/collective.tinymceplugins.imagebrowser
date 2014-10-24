@@ -14,3 +14,8 @@ class ITinyMCELibrariesImageResources(Interface):
                               value_type=schema.TextLine(),
                               default=[],
                               missing_value=[])
+    
+    imagebrowser_default_resource = schema.TextLine(title=_(u"Default Image Resource"),
+                                    required=False,
+                                    default=u'',
+                                    missing_value=u'')
